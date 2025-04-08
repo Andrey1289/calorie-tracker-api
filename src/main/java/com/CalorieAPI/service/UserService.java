@@ -27,10 +27,11 @@ public class UserService {
     }
 
     private double calculateDailyCalories(User user) {
-        // Формула Харриса-Бенедикта
-        double bmr = 88.362 + (13.397 * user.getWeight())
-                + (4.799 * user.getHeight())
-                - (5.677 * user.getAge());
+        // Формула Миффлина-Сан Жеора (более современная)
+        double bmr = 10 * user.getWeight()
+                + 6.25 * user.getHeight()
+                - 5 * user.getAge()
+                + (user.getGender() == Gender.MALE ? 5 : -161);
 
         return switch (user.getGoal()) {
             case LOSE_WEIGHT -> bmr * 0.85;

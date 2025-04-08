@@ -23,7 +23,8 @@ public class UserRequestDto {
     @Positive
     private double weight;
 
-    @Positive
+    @Min(value = 30, message = "Рост должен быть не менее 30 см")
+    @Max(value = 300, message = "Рост должен быть не более 300 см")
     private double height;
 
     @NotNull(message = "Goal must be specified")
